@@ -1,3 +1,4 @@
+// Copyright 2021 NNTU-CS
 #ifndef INCLUDE_BST_H_
 #define INCLUDE_BST_H_
 #include <fstream>
@@ -22,24 +23,24 @@ class BST {
     root = nullptr;
     depthV = 0;
   }
-  void PrintT(Node<T>* tree, int i) {
+  void printT(Node<T>* tree, int i) {
     std::cout << i << "-----" << tree->value << "\n";
     ++i;
     if (tree->left != nullptr) {
-      PrintTree(tree->left, i);
+      printTree(tree->left, i);
     }
     if (tree->right != nullptr) {
-      PrintTree(tree->right, i);
+      printTree(tree->right, i);
     }
     return;
   }
-  void Get_Depth(Node<T>* tree, int i) {
+  void getDepth(Node<T>* tree, int i) {
     ++i;
     if (tree->left != nullptr) {
-      Get_Depth(tree->left, i);
+      getDepth(tree->left, i);
     }
     if (tree->right != nullptr) {
-      Get_Depth(tree->right, i);
+      getDepth(tree->right, i);
     }
     if (i > depthV) depthV = i;
   }
@@ -87,7 +88,7 @@ class BST {
       }
     }
   }
-  int Search(T val) {
+  int search(T val) {
     Node<T>* current = root;
     while (true) {
       if (current->value == val) {
@@ -99,15 +100,15 @@ class BST {
       }
     }
   }
-  int Depth() {
+  int depth() {
     Node<T>* current = root;
-    Get_Depth(current, 0);
+    getDepth(current, 0);
     return depthV - 1;
   }
 
-  void PrintTree() {
+  void printTree() {
     Node<T>* current = root;
-    PrintT(current, 0);
+    printT(current, 0);
   }
 };
 #endif  // INCLUDE_BST_H_
